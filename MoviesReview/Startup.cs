@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using Owin;
 using Reviews.Models;
-using Reviews.Models.Db;
+using MoviesReview.Models;
 
 [assembly: OwinStartupAttribute(typeof(MoviesReview.Startup))]
 namespace MoviesReview

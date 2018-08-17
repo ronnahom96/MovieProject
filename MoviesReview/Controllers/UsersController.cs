@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Reviews.Models;
-using Reviews.Models.Db;
+using MoviesReview.Models;
 
 namespace MoviesReview.Controllers
 {
@@ -114,6 +114,19 @@ namespace MoviesReview.Controllers
             db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult GetGroupByGender()
+        {
+            var genderToUsers = db.Users.GroupBy(x => x.Gender, user => user, (gender, users) => new
+            {
+                Name = gender.ToString(),
+                Count = users.Count()
+            });
+
+            return Json(genderToUsers, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

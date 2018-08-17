@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Reviews.Models;
-using Reviews.Models.Db;
+using MoviesReview.Models;
 
 namespace MoviesReview.Controllers
 {

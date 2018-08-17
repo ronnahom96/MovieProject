@@ -1,7 +1,8 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Reviews.Models; // TODO: DELETE THIS SHIT
 
-namespace Reviews.Models.Db
+namespace MoviesReview.Models
 {
     public class MoviesContext : DbContext
     {
