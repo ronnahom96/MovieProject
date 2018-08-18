@@ -27,6 +27,11 @@ namespace Reviews.Models
         public int UserID { get; set; }
         public virtual User User { get; set; }
 
+        [Required]
+        [DisplayName("CurrentMovie")]
+        [ForeignKey("Movie")]
+        public int MovieID { get; set; }
+        public virtual Movie Movie { get; set; }
 
         public virtual List<Comment> Comments { get; set; }
     }
