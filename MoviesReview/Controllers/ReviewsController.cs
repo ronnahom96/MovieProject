@@ -129,5 +129,21 @@ namespace MoviesReview.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Search(string content, string title, DateTime? date)
+        {
+            var dayAfterDate = date?.AddDays(1);
+
+            return View(db.Reviews
+                .Where(review =>
+                    (!string.IsNullOrEmpty(content) && review.Content.ToLower().Contains(content.ToLower())) ||
+                    (!string.IsNullOrEmpty(title) && review.Title.ToLower().Contains(title.ToLower())) ||
+                    (date.HasValue && dayAfterDate.HasValue && date < review.CreationDate && review.CreationDate < dayAfterDate))
+                .OrderByDescending(x => x.CreationDate)
+                .ToList());
+        }
     }
 }

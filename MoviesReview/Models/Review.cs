@@ -26,7 +26,8 @@ namespace Reviews.Models
         [ForeignKey("User")]
         public int UserID { get; set; }
         public virtual User User { get; set; }
-        
+
+
         public virtual List<Comment> Comments { get; set; }
     }
 }
