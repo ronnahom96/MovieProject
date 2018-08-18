@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Reviews.Models;
 using MoviesReview.Models;
+using MoviesReview.Models.ViewModels;
 
 namespace MoviesReview.Controllers
 {
@@ -127,6 +128,30 @@ namespace MoviesReview.Controllers
             });
 
             return Json(genderToUsers, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Stats()
+        {
+            var userReviewsViewModels = (from user in db.Users
+                                         join review in db.Reviews on user.Id equals review.User.Id
+                                         select new
+                                         {
+                                             Id = user.Id,
+                                             UserName = user.Username,
+                                             FirstName = user.FirstName,
+                                             LastName = user.LastName,
+                                             Review = review
+                                         }).GroupBy(x => x.Id).ToList()
+                .Select(x => new UserReviewsViewModel
+                {
+                    UserName = x.First().UserName,
+                    FirstName = x.First().FirstName,
+                    LastName = x.First().LastName,
+                    Reviews = x.Select(y => y.Review)
+                });
+
+            return View(userReviewsViewModels);
         }
 
         protected override void Dispose(bool disposing)

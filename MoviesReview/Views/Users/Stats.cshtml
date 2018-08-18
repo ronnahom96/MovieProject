@@ -1,7 +1,43 @@
-﻿
+﻿<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/d3-handler.js"></script>
+
+
+<h2 class="page-title" style="margin-top: 30px">@ViewBag.Title</h2>
+
+@model IEnumerable<MoviesReview.Models.ViewModels.UserReviewsViewModel>
 @{
-    ViewBag.Title = "Stats";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Stats</h2>
+@{
+    // User and its number of reviews
+    // TODO: DELETE ME
+    var usersReplayCount = Model.Select(x => new { Name = x.UserName, Count = x.Reviews.Count() });
+}
 
+<div class="aligned-to-center-div">
+
+    <section id="popular-gender-graph">
+        <h4>Users by gender</h4>
+        <p>Displays the users division by their gender</p>
+    </section>
+    <script>
+        $.ajax({
+            url: '/Users/GetGroupByGender',
+            success: (data) => {
+                createPopularUsersGraph(data, "popular-gender-graph");
+            }
+        })
+    </script>
+
+    <section id="popular-users-graph">
+        <h4>Most popular reviewers</h4>
+        <p>Displays the users with the most reviews</p>
+    </section>
+
+    <script>
+        var usersData = @Html.Raw(Json.Encode(usersReplayCount));
+        createPopularUsersGraph(usersData, "popular-users-graph");
+    </script>
+</div>

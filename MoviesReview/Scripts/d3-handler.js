@@ -7,7 +7,7 @@ function createPopularUsersGraph(data, id) {
         radius = Math.min(width, height) / 2;
 
     var color = d3.scale.ordinal()
-        .range(["#a05d56", "#6b486b", "#ff8c00", "#98abc5", "#8a89a6", "#d0743c", "#7b6888"]);
+        .range(["#247BA0", "#70C1B3", "#B2DBBF", "#F3FFBD", "#FF1654", "#740A27", "#000000"]);
 
     var arc = d3.svg.arc()
         .outerRadius(radius - 10)

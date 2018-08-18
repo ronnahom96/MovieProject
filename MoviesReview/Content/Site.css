@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+.aligned-to-center-div {
+    display: flex;
+    justify-content: space-between;
+}
