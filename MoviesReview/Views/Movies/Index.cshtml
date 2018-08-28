@@ -35,10 +35,12 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
+            <img src='@Html.DisplayFor(modelItem=>item.ImageUrl)' style="height:50px;width:100px;" />
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TrailerUrl)
+            <iframe id="ytplayer" type="text/html" width="640" height="360"
+                    src='@Html.DisplayFor(modelItem => item.TrailerUrl)'
+                    frameborder="0"></iframe>
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
