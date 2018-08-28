@@ -10,34 +10,32 @@
     <title>@ViewBag.Title - Reviews</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-<<<<<<< HEAD
     <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
-=======
+    <link href="~/Content/hover.css" type="text/css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
->>>>>>> master
 
 </head>
 <body>
-    <header class="navbar navbar-light bg-light fixed-top reviews-navbar">
+    <header class="navbar navbar-light bg-light fixed-top reviews-navbar custom-nav-bar">
         <a href="/">
-            <img src="../../Content/stackReviews.png" class="logo">
+            <img src="../../Content/Movie.png" class="logo hvr-bounce-in">
         </a>
         <nav class="navbar-nav-scroll">
             <ul class="navbar-nav bd-navbar-nav flex-row">
-                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Reviews", "Index", "Reviews", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item custom-nav-link">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
+                <li class="nav-item custom-nav-link">@Html.ActionLink("Reviews", "Index", "Reviews", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
                 @if (user != null && user.IsAdmin)
             {
-                    <li class="nav-item">@Html.ActionLink("Categories", "Index", "Categories", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item custom-nav-link">@Html.ActionLink("Categories", "Index", "Categories", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
                 }
                 @if (user != null && user.IsAdmin)
             {
-                    <li class="nav-item">@Html.ActionLink("Users", "Index", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li class="nav-item custom-nav-link">@Html.ActionLink("Users", "Index", "User", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
                 }
-                <li class="nav-item">@Html.ActionLink("User Statistics", "Stats", "User", new { area = "" }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Review Statistics", "Stats", "Reviews", new { area = "" }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item custom-nav-link">@Html.ActionLink("User Statistics", "Stats", "User", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
+                <li class="nav-item custom-nav-link">@Html.ActionLink("Review Statistics", "Stats", "Reviews", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
+                <li class="nav-item custom-nav-link">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
             </ul>
         </nav>
         @Html.Partial("_LoginPartial")

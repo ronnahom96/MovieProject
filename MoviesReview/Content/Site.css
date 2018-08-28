@@ -9,12 +9,20 @@
 .logo {
     width: 10rem;
     transition: all 0.3s ease;
+    border-radius: 100%;
+    width: 90px;
+    height: 70px;
 }
 
 .logo:hover {
-    -webkit-transform: rotateZ(-30deg);
+    /*-webkit-transform: rotateZ(-30deg);
     -ms-transform: rotateZ(-30deg);
-    transform: rotateZ(-30deg);
+    transform: rotateZ(-30deg);*/
+
+    /*transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;*/
 }
 
 .welcome {
@@ -37,20 +45,17 @@
     padding-right: 1rem;
 }
 
-<<<<<<< HEAD
-
 .aligned-to-center-div {
     display: flex;
     justify-content: space-between;
 }
-=======
+
 .main-search {
     height: 150px;
     width: 100%;
     color: #FFF;
     display: flex;
-    background-color: #117bf3;
-    background-image: url(https://cdn.sstatic.net/img/hero/pattern.svg?v=4b5c30ad0473),linear-gradient(to right, #126CFA 0, #108AEC 100%);
+    background-color: #F77B00;
     background-position: right center,center center;
     background-repeat: no-repeat,no-repeat;
     font-size: 18px;
@@ -89,4 +94,17 @@
     width: 50%;
     margin: 0 auto;
 }
->>>>>>> master
+
+.custom-nav-bar {
+    background-color: #848E95 !important;
+}
+
+.custom-nav-link {
+    color: black !important;
+}
+
+
+.custom-nav-link :hover {
+    text-shadow: 2px 2px !important;
+    color: rgba(247,123,0, 0.2) !important;
+}

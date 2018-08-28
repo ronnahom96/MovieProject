@@ -35,17 +35,17 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            <img src='@Html.DisplayFor(modelItem=>item.ImageUrl)' style="height:50px;width:100px;" />
+            <img src='@Html.DisplayFor(modelItem => item.ImageUrl)' style="height:50px;width:100px;" />
         </td>
         <td>
             <iframe id="ytplayer" type="text/html" width="640" height="360"
                     src='@Html.DisplayFor(modelItem => item.TrailerUrl)'
                     frameborder="0"></iframe>
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        <td style="display:flex; justify-content: space-between">
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "nav-link custom-nav-link btn btn-danger" })  
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "nav-link custom-nav-link btn btn-danger" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "nav-link custom-nav-link btn btn-danger" })
         </td>
     </tr>
 }
