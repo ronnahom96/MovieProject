@@ -53,6 +53,7 @@ namespace MoviesReview.Controllers
         {
             if (ModelState.IsValid)
             {
+                movie.TrailerUrl = movie.TrailerUrl.Replace("watch?v=", "embed/");
                 db.Movies.Add(movie);
                 db.SaveChanges();
                 return RedirectToAction("Index");

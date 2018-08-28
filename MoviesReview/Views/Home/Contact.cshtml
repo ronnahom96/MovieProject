@@ -1,17 +1,26 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@using Reviews.Models
+@{
+    ViewBag.Title = "Contact Us";
+    ViewBag.Location = 7519007;
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@model string
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<h1>
+    @ViewBag.Title
+</h1>
+<div style="display: flex; justify-content: space-between;">
+    <div>
+        <strong>Owners: </strong> <br />
+        <a href="mailto:ronnahom96@gmail.com">ronnahom96@gmail.com</a><br />
+        <a href="mailto:barofi14@gmail.com">barofi14@gmail.com</a><br />
+        <a href="mailto:rotem4432@gmail.com">rotem4432@gmail.com</a><br />
+    </div>
+    <div>
+        <address>
+            Our College at Elie Wiesel St. 2, Rishon LeZion, Israel
+        </address>
+        <iframe src="https://www.google.com/maps?q=@(ViewBag.Location)&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+</div>
+
