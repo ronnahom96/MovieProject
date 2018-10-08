@@ -55,21 +55,29 @@ namespace MoviesReview.Controllers
             return View();
         }
 
-        // POST: Users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Gender,Username,FirstName,LastName,Password,IsAdmin")] User user)
+        [AllowAnonymous]
+        public ActionResult Create([Bind(Include = "ID,Gender,Username,FirstName,LastName,Password,isAdmin")] User user)
         {
-            if (ModelState.IsValid)
+            var oRegisterRedirect = SaveUser(user, RedirectToAction("Index", "Home"));
+
+            Session.Add("User", user);
+
+            return oRegisterRedirect;
+        }
+
+        private ActionResult SaveUser(User user, RedirectToRouteResult redirectOnSucess)
+        {
+            if (!ModelState.IsValid || db.Users.Any(x => x.Username == user.Username))
             {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View(user);
             }
 
-            return View(user);
+            db.Users.Add(user);
+            db.SaveChanges();
+
+            return redirectOnSucess;
         }
 
         // GET: Users/Edit/5

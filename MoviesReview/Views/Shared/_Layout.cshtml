@@ -10,6 +10,7 @@
     <title>@ViewBag.Title - Reviews</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" href="../../Content/Movie.png">
     <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
     <link href="~/Content/hover.css" type="text/css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.js"></script>
@@ -46,9 +47,9 @@
         <div class="main-search">
             <div style="width: 50%;">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="title" placeholder="Search review for...">
+                    <input type="text" class="form-control" name="movieName" style="height:48px; margin-right: 2%" placeholder="Search reviews by movie name...">
                     <span class="input-group-btn">
-                        <button class="btn btn-outline-light btn-lg" type="button">Search!</button>
+                        <button class="btn btn-outline-light btn-lg" type="submit">Search!</button>
                     </span>
                 </div>
             </div>

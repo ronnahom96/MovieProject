@@ -6,6 +6,9 @@
 
 @model string
 
+<script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AglqlqQgF_dEaS3S7mR7g--ZYzo_Xfaqy0WS68UwWaisBsU0QREVDSmOPKY_yicD' async defer></script>
+
+
 <h1>
     @ViewBag.Title
 </h1>
@@ -16,11 +19,27 @@
         <a href="mailto:barofi14@gmail.com">barofi14@gmail.com</a><br />
         <a href="mailto:rotem4432@gmail.com">rotem4432@gmail.com</a><br />
     </div>
+
+
+
+    <script type='text/javascript'>
+        function GetMap() {
+            var map = new Microsoft.Maps.Map('#myMap', {
+                credentials: 'AglqlqQgF_dEaS3S7mR7g--ZYzo_Xfaqy0WS68UwWaisBsU0QREVDSmOPKY_yicD',
+                center: new Microsoft.Maps.Location(31.970001, 34.771610),
+                mapTypeId: Microsoft.Maps.MapTypeId.road,
+                zoom: 17
+            });
+
+        }
+    </script>
+
     <div>
         <address>
             Our College at Elie Wiesel St. 2, Rishon LeZion, Israel
         </address>
-        <iframe src="https://www.google.com/maps?q=@(ViewBag.Location)&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div id="myMap" style="width:600px; height:400px"></div>
+        @*<iframe src="https://www.google.com/maps?q=@(ViewBag.Location)&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>*@
     </div>
 </div>
 

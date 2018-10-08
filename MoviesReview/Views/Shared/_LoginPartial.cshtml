@@ -29,10 +29,10 @@ else
     @if (user == null)
     {
         <li class="nav-item">
-            @Html.ActionLink("Register", "Create", "Users", new { area = "" }, new { @class = "btn btn-outline-primary" })
+            @Html.ActionLink("Register", "Create", "Users", new { area = "" }, new { @class = "btn btn-primary" })
         </li>
         <li class="nav-item">
-            @Html.ActionLink("Login", "Login", "Users", new { area = "" }, new { @class = "btn-outline" })
+            @Html.ActionLink("Login", "Login", "Users", new { area = "" }, new { @class = "btn btn-primary" })
         </li>
     }
     else
