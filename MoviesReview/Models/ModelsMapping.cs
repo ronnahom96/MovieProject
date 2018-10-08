@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Reviews.Models; // TODO: DELETE THIS SHIT
+using MoviesReview.Models; // TODO: DELETE THIS SHIT
 
 namespace MoviesReview.Models
 {

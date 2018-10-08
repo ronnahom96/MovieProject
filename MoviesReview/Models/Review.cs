@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Reviews.Models
+namespace MoviesReview.Models
 {
     public class Review : BaseModel
     {
@@ -22,13 +22,13 @@ namespace Reviews.Models
         public DateTime CreationDate { get; set; }
       
         [Required]
-        [DisplayName("Posting User")]
+        [DisplayName("User")]
         [ForeignKey("User")]
         public int UserID { get; set; }
         public virtual User User { get; set; }
 
         [Required]
-        [DisplayName("CurrentMovie")]
+        [DisplayName("Movie")]
         [ForeignKey("Movie")]
         public int MovieID { get; set; }
         public virtual Movie Movie { get; set; }

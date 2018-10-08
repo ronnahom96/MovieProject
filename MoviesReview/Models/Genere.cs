@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Reviews.Models
+namespace MoviesReview.Models
 {
     public class Genere : BaseModel
     {

@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<Reviews.Models.Review>
+﻿@*@model IEnumerable<MoviesReview.Models.Review>
 
 @{
     ViewBag.Title = "Index";
@@ -51,7 +51,7 @@
 </table>*@
 
 
-@using Reviews.Models
+@using MoviesReview.Models
 @model IEnumerable<Review>
 
 @{
@@ -148,7 +148,7 @@
                 <a href="https://twitter.com/intent/tweet?screen_name=stackReviews&text=Read this review for @review.Title http://localhost:51259/Reviews/Details/@review.Id" class="twitter-mention-button" data-show-count="false">Tweet to stackReviews</a>
                 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
-            <p>Posted on @Html.DisplayFor(modelItem => review.CreationDate) by @Html.ActionLink(review.User.Username, "Details", "User", new { id = review.User.Id }, null) - <b>@review.Comments.Count Comments</b> in @Html.DisplayFor(modelItem => review.Title) category</p>
+            <p>Posted on @Html.DisplayFor(modelItem => review.CreationDate) by @Html.ActionLink(review.User.Username, "Details", "User", new { id = review.User.Id }, null) - <b>@review.Comments.Count Comments</b></p>
 
             <div style="column-count: 3; column-gap:40px; column-rule: 1px solid lightgrey">
                 @Html.DisplayFor(modelItem => review.Content)

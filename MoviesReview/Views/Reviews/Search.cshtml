@@ -2,7 +2,7 @@
     ViewBag.Title = "Search";
 }
 
-@using Reviews.Models
+@using MoviesReview.Models
 @model IEnumerable<Review>
 
 @{
@@ -102,7 +102,7 @@
                 @Html.DisplayFor(modelItem => review.Title)
             </h4>
 
-            <p>Posted on @Html.DisplayFor(modelItem => review.CreationDate) by <a href="#">@Html.DisplayFor(modelItem => review.User.Username)</a> - <a href="#comments">@review.Comments.Count Comments</a> in @Html.DisplayFor(modelItem => review.Title) category</p>
+            <p>Posted on @Html.DisplayFor(modelItem => review.CreationDate) by <a href="#">@Html.DisplayFor(modelItem => review.User.Username)</a> - <a href="#comments">@review.Comments.Count Comments</a></p>
 
             <div style="column-count: 3; column-gap:40px; column-rule: 1px solid lightgrey">
                 @Html.DisplayFor(modelItem => review.Content)

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Reviews.Models;
+using MoviesReview.Models;
 using MoviesReview.Models;
 using MoviesReview.Models.ViewModels;
 
@@ -20,6 +20,18 @@ namespace MoviesReview.Controllers
         public ActionResult Index()
         {
             return View(db.Users.ToList());
+        }
+
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult FailedLogin()
+        {
+            return View();
         }
 
         // GET: Users/Details/5
@@ -104,6 +116,31 @@ namespace MoviesReview.Controllers
                 return HttpNotFound();
             }
             return View(user);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Logout()
+        {
+            Session.Clear();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        public ActionResult Login([Bind(Include = "Username,Password")] User loginCredentials)
+        {
+            var user = db.Users.SingleOrDefault(u => u.Username.Equals(loginCredentials.Username) && u.Password.Equals(loginCredentials.Password));
+
+            if (user == null)
+            {
+                return RedirectToAction("FailedLogin", "Users");
+            }
+
+            Session.Add("User", user);
+
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: Users/Delete/5

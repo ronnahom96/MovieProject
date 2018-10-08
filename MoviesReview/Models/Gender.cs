@@ -1,4 +1,4 @@
-﻿namespace Reviews.Models
+﻿namespace MoviesReview.Models
 {
     public enum Gender
     {

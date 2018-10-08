@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using Reviews.Models;
+using MoviesReview.Models;
 
 namespace MoviesReview.Models.ViewModels
 {

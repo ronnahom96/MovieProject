@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Reviews.Models
+namespace MoviesReview.Models
 {
     public class Comment : BaseModel
     {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Reviews.Models
+namespace MoviesReview.Models
 {
     public abstract class BaseModel
     {

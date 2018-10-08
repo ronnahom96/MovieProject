@@ -1,4 +1,4 @@
-﻿@using Reviews.Models
+﻿@using MoviesReview.Models
 @{
     var user = (User)Session["User"];
 }
@@ -25,16 +25,16 @@
             <ul class="navbar-nav bd-navbar-nav flex-row">
                 <li class="nav-item custom-nav-link">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
                 <li class="nav-item custom-nav-link">@Html.ActionLink("Reviews", "Index", "Reviews", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
+                <li class="nav-item custom-nav-link">@Html.ActionLink("Movies", "Index", "Movies", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
                 @if (user != null && user.IsAdmin)
-            {
-                    <li class="nav-item custom-nav-link">@Html.ActionLink("Categories", "Index", "Categories", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
+                {
+                    <li class="nav-item custom-nav-link">@Html.ActionLink("Generes", "Index", "Generes", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
                 }
                 @if (user != null && user.IsAdmin)
-            {
-                    <li class="nav-item custom-nav-link">@Html.ActionLink("Users", "Index", "User", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
+                {
+                    <li class="nav-item custom-nav-link">@Html.ActionLink("Users", "Index", "Users", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
                 }
-                <li class="nav-item custom-nav-link">@Html.ActionLink("User Statistics", "Stats", "User", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
-                <li class="nav-item custom-nav-link">@Html.ActionLink("Review Statistics", "Stats", "Reviews", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
+                <li class="nav-item custom-nav-link">@Html.ActionLink("User Statistics", "Stats", "Users", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
                 <li class="nav-item custom-nav-link">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link custom-nav-link" })</li>
             </ul>
         </nav>
@@ -64,7 +64,7 @@
             <p>getting info...</p>
         </div>
         <div>
-            <p>© 2017 - stackReviews </p>
+            <p>© 2018 - Movies Reviews </p>
         </div>
     </footer>
 

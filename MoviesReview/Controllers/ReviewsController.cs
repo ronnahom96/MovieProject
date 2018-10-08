@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Reviews.Models;
+using MoviesReview.Models;
 using MoviesReview.Models;
 
 namespace MoviesReview.Controllers
@@ -15,14 +15,14 @@ namespace MoviesReview.Controllers
     {
         private MoviesContext db = new MoviesContext();
 
-        // GET: Reviews2
+        // GET: Reviews
         public ActionResult Index()
         {
             var reviews = db.Reviews.Include(r => r.Movie).Include(r => r.User);
             return View(reviews.ToList());
         }
 
-        // GET: Reviews2/Details/5
+        // GET: Reviews/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,7 +37,7 @@ namespace MoviesReview.Controllers
             return View(review);
         }
 
-        // GET: Reviews2/Create
+        // GET: Reviews/Create
         public ActionResult Create()
         {
             ViewBag.MovieID = new SelectList(db.Movies, "Id", "Name");
@@ -45,13 +45,30 @@ namespace MoviesReview.Controllers
             return View();
         }
 
-        // POST: Reviews2/Create
+        public ActionResult PostComment(int userId, int reviewId, string content)
+        {
+            db.Comments.Add(new Comment
+            {
+                Content = content,
+                UserID = userId,
+                ReviewID = reviewId,
+                CreationDate = DateTime.Now
+            });
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        // POST: Reviews/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Content,CreationDate,UserID,MovieID")] Review review)
+        public ActionResult Create([Bind(Include = "Id,Title,Content,UserID,MovieID")] Review review)
         {
+            review.CreationDate = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Reviews.Add(review);
@@ -61,10 +78,11 @@ namespace MoviesReview.Controllers
 
             ViewBag.MovieID = new SelectList(db.Movies, "Id", "Name", review.MovieID);
             ViewBag.UserID = new SelectList(db.Users, "Id", "Username", review.UserID);
+            
             return View(review);
         }
 
-        // GET: Reviews2/Edit/5
+        // GET: Reviews/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,7 +99,7 @@ namespace MoviesReview.Controllers
             return View(review);
         }
 
-        // POST: Reviews2/Edit/5
+        // POST: Reviews/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -99,7 +117,7 @@ namespace MoviesReview.Controllers
             return View(review);
         }
 
-        // GET: Reviews2/Delete/5
+        // GET: Reviews/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,7 +132,7 @@ namespace MoviesReview.Controllers
             return View(review);
         }
 
-        // POST: Reviews2/Delete/5
+        // POST: Reviews/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
