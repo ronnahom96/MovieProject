@@ -152,7 +152,6 @@ namespace MoviesReview.Controllers
             base.Dispose(disposing);
         }
 
-
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Search(string content, string title, DateTime? date, string movieName)

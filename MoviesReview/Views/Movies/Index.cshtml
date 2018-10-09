@@ -42,10 +42,10 @@
 
     <hr />
 }
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <h6>Please add a movie!</h6>
+    <button type="button" class="btn" style="border-radius: 15px 5px;">
+        @Html.ActionLink("Add a new Movie", "Create")
+    </button>
 <table class="table">
     <tr>
         <th>
@@ -76,7 +76,7 @@
                 <img src='@Html.DisplayFor(modelItem => item.ImageUrl)' style="height:50px;width:100px;" />
             </td>
             <td>
-                <iframe id="ytplayer" type="text/html" width="640" height="360"
+                <iframe id="ytplayer" type="text/html" width="400" height="240"
                         src='@Html.DisplayFor(modelItem => item.TrailerUrl)'
                         frameborder="0"></iframe>
             </td>
