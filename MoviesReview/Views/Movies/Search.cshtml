@@ -1,51 +1,15 @@
-﻿@model IEnumerable<MoviesReview.Models.Movie>
+﻿@{
+    ViewBag.Title = "Search";
+}
+
+@using MoviesReview.Models
+@model IEnumerable<Movie>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search Results";
+    var user = (User)Session["User"];
 }
 
-<h2>Movies</h2>
-
-
-@using (Html.BeginForm("Search", "Movies", FormMethod.Get))
-{
-    <aside style="margin: 20px 0">Enter up to 2 search parameters and click the "Search" button below</aside>
-
-    <div class="container">
-        <div class="row">
-            <div class="form-group col-md-2">
-                <div class="col-md-2">
-                    Name:
-                </div>
-                <div class="col-md-10">
-                    <input type="text" name="name" />
-                </div>
-            </div>
-            <div class="form-group col-md-2">
-                <div class="col-md-2">
-                    Genere:
-                </div>
-                <div class="col-md-10">
-                    <input type="text" name="genere" />
-                </div>
-            </div>
-
-            <div class="form-group col-md-2">
-                <div class="col-md-10">
-                    <input type="submit" value="Search" class="btn btn-default" style="position: absolute; top: 20px" />
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-
-    <hr />
-}
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -80,12 +44,49 @@
                         src='@Html.DisplayFor(modelItem => item.TrailerUrl)'
                         frameborder="0"></iframe>
             </td>
-            <td style="display:flex; justify-content: space-between">
+            @*<td style="display:flex; justify-content: space-between">
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "nav-link custom-nav-link btn btn-danger" })
                 @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "nav-link custom-nav-link btn btn-danger" })
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "nav-link custom-nav-link btn btn-danger" })
-            </td>
+            </td>*@
         </tr>
     }
 
 </table>
+
+@using (Html.BeginForm("Search", "Movies", FormMethod.Get))
+{
+    <aside style="margin: 20px 0">Enter up to 3 search parameters and click the "Search" button below</aside>
+
+    <div class="container">
+        <div class="row">
+            <div class="form-group col-md-2">
+                <div class="col-md-2">
+                    Name:
+                </div>
+                <div class="col-md-10">
+                    <input type="text" name="name" />
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+                <div class="col-md-2">
+                    Genere:
+                </div>
+                <div class="col-md-10">
+                    <input type="text" name="genere" />
+                </div>
+            </div>
+
+            <div class="form-group col-md-2">
+                <div class="col-md-10">
+                    <input type="submit" value="Search" class="btn btn-default" style="position: absolute; top: 20px" />
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <hr />
+}
+

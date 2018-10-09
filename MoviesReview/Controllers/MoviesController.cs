@@ -130,5 +130,17 @@ namespace MoviesReview.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Search(string name, string genere)
+        {
+          
+            return View(db.Movies
+                .Where(movie =>
+                    (!string.IsNullOrEmpty(name) && movie.Name.ToLower().Contains(name.ToLower())) ||
+                    !string.IsNullOrEmpty(genere) && movie.Genere.Name.ToLower().Contains(genere.ToLower()))
+                .ToList());
+        }
     }
 }

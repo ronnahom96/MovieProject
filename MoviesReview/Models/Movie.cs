@@ -8,7 +8,7 @@ namespace MoviesReview.Models
     public class Movie : BaseModel
     {
         [Required]
-        [DisplayName("Movie")]
+        [DisplayName("Name")]
         public string Name { get; set; }
 
         [Required]

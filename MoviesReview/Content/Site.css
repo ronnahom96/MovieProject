@@ -6,10 +6,14 @@
     white-space: normal;
 }
 
+.logo-border {
+    background-color: #F77B00 !important;
+    border-radius: 100%;
+}
+
 .logo {
     width: 10rem;
     transition: all 0.3s ease;
-    border-radius: 100%;
     width: 90px;
     height: 70px;
 }
@@ -105,6 +109,7 @@
 
 
 .custom-nav-link :hover {
-    text-shadow: 2px 2px !important;
-    color: rgba(247,123,0, 0.2) !important;
+    text-shadow: 1px 0.5px !important;
+    color: black !important;
+    font-size: 1.1em;
 }

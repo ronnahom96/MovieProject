@@ -1,7 +1,6 @@
 ﻿@using MoviesReview.Models
 @{
     ViewBag.Title = "Contact Us";
-    ViewBag.Location = 7519007;
 }
 
 @model string
@@ -31,7 +30,11 @@
                 zoom: 17
             });
 
+            var layer = new Microsoft.Maps.Layer("MyPushpinLayer1");
+            layer.add(new Microsoft.Maps.Pushpin(map.getCenter()));
+            map.layers.insert(layer);
         }
+
     </script>
 
     <div>
