@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Accord.MachineLearning.Bayes;
 using MoviesReview.Models;
 using MoviesReview.Models;
 
@@ -142,5 +143,6 @@ namespace MoviesReview.Controllers
                     !string.IsNullOrEmpty(genere) && movie.Genere.Name.ToLower().Contains(genere.ToLower()))
                 .ToList());
         }
+
     }
 }
