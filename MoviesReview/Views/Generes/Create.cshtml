@@ -12,28 +12,27 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Genere</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                <div style="width: 20%">@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })</div>
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div style="display:inline-flex" class="form-group">
+            <div style="margin-right: 5%">
+                <input type="submit" value="Create" class="btn btn-info" />
             </div>
+            <button type="button" class="btn" style="border-radius: 15px 5px;">
+                @Html.ActionLink("Back to List", "Index")
+            </button>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

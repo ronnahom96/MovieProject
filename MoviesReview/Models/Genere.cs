@@ -7,10 +7,9 @@ namespace MoviesReview.Models
     public class Genere : BaseModel
     {
         [Required]
-        [DisplayName("Genere")]
+        [DisplayName("Genre Name")]
         public string Name { get; set; }
 
         public virtual List<Movie> Movies { get; set; }
-        
     }
 }
