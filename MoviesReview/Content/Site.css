@@ -59,7 +59,7 @@
     width: 100%;
     color: #FFF;
     display: flex;
-    background-color: #F77B00;
+    background-color: #98B9F2;
     background-position: right center,center center;
     background-repeat: no-repeat,no-repeat;
     font-size: 18px;
@@ -100,7 +100,7 @@
 }
 
 .custom-nav-bar {
-    background-color: #848E95 !important;
+    background-color: #306bac !important;
 }
 
 .custom-nav-link {

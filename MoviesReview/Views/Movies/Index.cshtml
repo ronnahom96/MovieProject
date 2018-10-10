@@ -13,26 +13,28 @@
 
     <div class="container">
         <div class="row">
-            <div class="form-group col-md-2">
-                <div class="col-md-2">
-                    Name:
-                </div>
-                <div class="col-md-10">
-                    <input type="text" name="name" />
-                </div>
+            @*<div class="form-group col-md-2">
+            <div class="col-md-2">
+                Name:
             </div>
+            <div class="col-md-10">
+                <input type="text" name="name" />
+            </div>
+        </div>*@
+
             <div class="form-group col-md-2">
-                <div class="col-md-2">
-                    Genere:
-                </div>
-                <div class="col-md-10">
-                    <input type="text" name="genere" />
-                </div>
+                <div class="control-label">Name</div>
+                <input type="text" name="name" class="form-control" />
+            </div>
+
+            <div class="form-group col-md-2">
+                <div class="control-label">Genere</div>
+                <input type="text" name="genere" class="form-control" />
             </div>
 
             <div class="form-group col-md-2">
                 <div class="col-md-10">
-                    <input type="submit" value="Search" class="btn btn-default" style="position: absolute; top: 20px" />
+                    <input type="submit" value="Search" class="btn btn-default" style="position: absolute; top: 24px" />
                 </div>
             </div>
 

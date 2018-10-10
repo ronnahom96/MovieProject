@@ -57,23 +57,23 @@ namespace MoviesReview.Controllers
 
             // Extract input and output pairs to train
             int[][] symbols = codebook.Transform(data);
-            int[][] inputs = symbols.Get(null, 0, -1); // Gets all rows, from 0 to the last (but not the last)
-            int[] outputs = symbols.GetColumn(-1);     // Gets only the last column
+            //int[][] inputs = symbols.Get(null, 0, -1); // Gets all rows, from 0 to the last (but not the last)
+            //int[] outputs = symbols.GetColumn(-1);     // Gets only the last column
 
             // Create a new Naive Bayes learning
             var learner = new NaiveBayesLearning();
 
-            NaiveBayes nb = learner.Learn(inputs, outputs);
+            //NaiveBayes nb = learner.Learn(inputs, outputs);
 
             // Consider we would like to know whether one should play tennis at a
             // sunny, cool, humid and windy day. Let us first encode this instance
             int[] instance = codebook.Translate("Sunny", "Cool", "High", "Strong");
 
             // Let us obtain the numeric output that represents the answer
-            int c = nb.Decide(instance); // answer will be 0
+            //int c = nb.Decide(instance); // answer will be 0
 
             // Now let us convert the numeric output to an actual "Yes" or "No" answer
-            string result = codebook.Translate("PlayTennis", c); // answer will be "No"
+            //string result = codebook.Translate("PlayTennis", c); // answer will be "No"
 
             return null;
         }
