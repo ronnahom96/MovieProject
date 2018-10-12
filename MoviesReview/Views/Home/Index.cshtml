@@ -1,5 +1,5 @@
 ﻿@using MoviesReview.Models
-@model Review
+@model Movie
 @{
     ViewBag.Title = "Home Page";
     var user = (User)Session["User"];
@@ -7,8 +7,20 @@
 
 <div class="row">
 
+    @if (@Model.Id != 0)
+    {
+        <div style="margin:3%">
+            <div style="margin:3%">
+                <h4 style="margin:3%">
+                    We found a movie that you will be intersted in :
+                    @Html.DisplayFor(model => model.Name)
+                </h4>
 
-    @Html.ActionLink("Recommend Movie", "RecommendMovie")
+                @Html.ActionLink("Details", "Details", "Movies", new { id = Model.Id }, new { @class = "nav-link custom-nav-link btn btn-info" })
+            </div>
+        </div>
+        <img style="margin-top:3%; width:200px; height: 150px;" src='@Model.ImageUrl' />
+    }
 
     <canvas id="jamalcanvs" style="color:red"> </canvas>
 </div>

@@ -35,11 +35,38 @@
             <iframe id="ytplayer" type="text/html" width="640" height="360"
                     src='@Html.DisplayFor(model => model.TrailerUrl)'
                     frameborder="0"></iframe>
+            <div id="myMap" style="width:600px; height:400px"></div>
         </dd>
-
     </dl>
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AglqlqQgF_dEaS3S7mR7g--ZYzo_Xfaqy0WS68UwWaisBsU0QREVDSmOPKY_yicD' async defer></script>
+<script type='text/javascript'>
+    
+    function GetMap() {
+            var location_x = parseFloat('@Model.xLocation');
+            var location_y = parseFloat('@Model.yLocation');
+            var map = new Microsoft.Maps.Map('#myMap', {
+                credentials: 'AglqlqQgF_dEaS3S7mR7g--ZYzo_Xfaqy0WS68UwWaisBsU0QREVDSmOPKY_yicD',
+                center: new Microsoft.Maps.Location(location_x, location_y),
+                mapTypeId: Microsoft.Maps.MapTypeId.road,
+                zoom: 17
+            });
+            var movie_name = '@Model.Name';
+            var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(location_x, location_y), {
+                text: movie_name
+            });
+
+            map.entities.push(pin);
+
+            var layer = new Microsoft.Maps.Layer("MyPushpinLayer1");
+            layer.add(new Microsoft.Maps.Pushpin(map.getCenter()));
+            map.layers.insert(layer);
+        }
+
+</script>

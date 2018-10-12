@@ -15,7 +15,9 @@ namespace MoviesReview.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            Movie recomendedMovie = RecommendMovie();
+
+            return View(recomendedMovie);
         }
 
         public ActionResult About()
@@ -32,64 +34,88 @@ namespace MoviesReview.Controllers
             return View();
         }
 
-        public ActionResult RecommendMovie()
+        public Movie RecommendMovie()
         {
-            int userID = ((User)Session["User"]).Id;
-
-            var jamal = db.Reviews.Where(review => review.UserID == userID).ToList();
-
-            int[] selectedGeneres = db.Reviews.Where(review => review.UserID == userID).Select(review => review.Movie.GenereID).ToArray();
-            int[][] dataset = new int[selectedGeneres.Length][];
-
-            Dictionary<int, int> mapper = new Dictionary<int, int>();
-            Dictionary<int, int> mapperOpsite = new Dictionary<int, int>();
-
-
-            int counter = 0;
-
-            for (int genereIndex = 0; genereIndex < selectedGeneres.Length; genereIndex++)
-            {
-                dataset[genereIndex] = new int[1];
-
-                if (!mapper.ContainsKey(selectedGeneres[genereIndex]))
-                {
-                    mapper[selectedGeneres[genereIndex]] = counter;
-                    mapperOpsite[counter] = selectedGeneres[genereIndex];
-
-                    counter++;
-                }
-
-                
-            }
-
-            int[] mappedLabels = new int[selectedGeneres.Length];
-
-            for (int i = 0; i < selectedGeneres.Length; i++)
-            {
-                mappedLabels[i] = mapper[selectedGeneres[i]];
-            }
-
-            //Array.Clear(dataset, 0, dataset.Length);
-
-
-            var learner = new NaiveBayesLearning();
-
-            NaiveBayes nb = learner.Learn(dataset, mappedLabels);
-
-            int[] prediction = new int[] { default(int)};
-
-            int selectedGenereMapped = nb.Decide(prediction);
-
-            int selectedIndex = mapperOpsite[selectedGenereMapped];
-
-            // Select random movie from the user favorite genere
             Random rnd = new Random();
+            Movie selectedMovie = null;
+            List<Movie> allMoviesInGenere = null;
+            int moviesLength = db.Movies.Count();
 
-            List<Movie> allMoviesInGenere = db.Generes.First(x => x.Id == selectedIndex).Movies;
+            if (moviesLength == 0)
+            {
+                return new Movie();
+            }
 
-            Movie selectedMovie = allMoviesInGenere[rnd.Next(allMoviesInGenere.Count)];
+            if (Session["User"] == null)
+            {
+                
+                selectedMovie = db.Movies.OrderBy(r => Guid.NewGuid()).First();
+            }
+            else
+            {
+                int userID = ((User)Session["User"]).Id;
 
-            return null;
+                int[] selectedGeneres = db.Reviews.Where(review => review.UserID == userID).Select(review => review.Movie.GenereID).Distinct().ToArray();
+
+                if (selectedGeneres.Length == 0)
+                {
+                    selectedMovie = db.Movies.OrderBy(r => Guid.NewGuid()).First();
+                }
+                else if (selectedGeneres.Length == 1)
+                {
+                    int selectedGenereId = selectedGeneres[0];
+
+                    allMoviesInGenere = db.Generes.First(x => x.Id == selectedGenereId).Movies;
+
+                    selectedMovie = allMoviesInGenere[rnd.Next(allMoviesInGenere.Count)];
+                }
+                else
+                {
+                    int[][] dataset = new int[selectedGeneres.Length][];
+
+                    Dictionary<int, int> mapper = new Dictionary<int, int>();
+                    Dictionary<int, int> mapperOpsite = new Dictionary<int, int>();
+
+                    int counter = 0;
+
+                    for (int genereIndex = 0; genereIndex < selectedGeneres.Length; genereIndex++)
+                    {
+                        dataset[genereIndex] = new int[1];
+
+                        if (!mapper.ContainsKey(selectedGeneres[genereIndex]))
+                        {
+                            mapper[selectedGeneres[genereIndex]] = counter;
+                            mapperOpsite[counter] = selectedGeneres[genereIndex];
+
+                            counter++;
+                        }
+
+                    }
+
+                    int[] mappedLabels = new int[selectedGeneres.Length];
+
+                    for (int i = 0; i < selectedGeneres.Length; i++)
+                    {
+                        mappedLabels[i] = mapper[selectedGeneres[i]];
+                    }
+
+
+                    var learner = new NaiveBayesLearning();
+                    NaiveBayes nb = learner.Learn(dataset, mappedLabels);
+
+                    int[] prediction = new int[] { default(int) };
+
+                    int selectedGenereMapped = nb.Decide(prediction);
+
+                    int selectedIndex = mapperOpsite[selectedGenereMapped];
+
+                    allMoviesInGenere = db.Generes.First(x => x.Id == selectedIndex).Movies;
+
+                    selectedMovie = allMoviesInGenere[rnd.Next(allMoviesInGenere.Count)];
+                }
+            }
+
+            return selectedMovie;
         }
     }
 }

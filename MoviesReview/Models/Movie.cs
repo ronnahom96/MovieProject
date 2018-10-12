@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 
 namespace MoviesReview.Models
 {
@@ -24,6 +25,14 @@ namespace MoviesReview.Models
         [Required]
         [DisplayName("Trailer Url")]
         public string TrailerUrl { get; set; }
+
+        [Required]
+        [DisplayName("X Location")]
+        public double? xLocation { get; set; }
+
+        [Required]
+        [DisplayName("Y Location")]
+        public double? yLocation { get; set; }
 
         public virtual List<Review> Reviews { get; set; }
     }
