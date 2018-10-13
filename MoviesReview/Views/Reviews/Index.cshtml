@@ -83,12 +83,12 @@
             <div style="column-count: 3; column-gap:40px; column-rule: 1px solid lightgrey">
                 @Html.DisplayFor(modelItem => review.Content)
             </div>
-            <div>
-                @Html.ActionLink("Details", "Details", new { id = review.Id }, new { @class = "btn btn-info" })
+            <div style="display:inline-flex">
+                <div style="margin-right: 2%;">@Html.ActionLink("Details", "Details", new { id = review.Id }, new { @class = "btn btn-info" })</div>
                 @if (user != null && user.IsAdmin)
                 {
-                    <span> | </span> @Html.ActionLink("Edit", "Edit", new { id = review.Id })
-                    <span> | </span> @Html.ActionLink("Delete", "Delete", new { id = review.Id })
+                <div style="margin-right: 2%;">@Html.ActionLink("Edit", "Edit", new { id = review.Id }, new { @class = "btn btn-info" })</div>
+                <div style="margin-right: 2%;">@Html.ActionLink("Delete", "Delete", new { id = review.Id }, new { @class = "btn btn-info" })</div>
                 }
             </div>
         </article>
