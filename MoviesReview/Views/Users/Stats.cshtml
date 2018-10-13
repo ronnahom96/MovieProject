@@ -12,7 +12,6 @@
 
 @{
     // User and its number of reviews
-    // TODO: DELETE ME
     var usersReplayCount = Model.Select(x => new { Name = x.UserName, Count = x.Reviews.Count() });
 }
 
