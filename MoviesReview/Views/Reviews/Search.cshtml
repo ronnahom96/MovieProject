@@ -68,8 +68,9 @@
 {
     <section>
         <article class="blogPost">
-            <h4 style="color: green">
-                @Html.DisplayFor(modelItem => review.Title)
+            <h4 style="display: flex">
+                <p style="color: #141b41;">@Html.DisplayFor(modelItem => review.Movie.Name)</p>,
+                <p style="color: #98b9f2;margin-left:1%">@Html.DisplayFor(modelItem => review.Title)</p>
             </h4>
 
             <p>Posted on @Html.DisplayFor(modelItem => review.CreationDate) by <a href="#">@Html.DisplayFor(modelItem => review.User.Username)</a> - <a href="#comments">@review.Comments.Count Comments</a></p>
@@ -81,9 +82,9 @@
             @if (user != null && user.IsAdmin)
             {
                 <div>
-                    @Html.ActionLink("Edit", "Edit", new { id = review.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = review.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = review.Id })
+                    @Html.ActionLink("Edit", "Edit", new { id = review.Id }, new { @class = "btn btn-info" }) 
+                    @Html.ActionLink("Details", "Details", new { id = review.Id }, new { @class = "btn btn-info" }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = review.Id }, new { @class = "btn btn-info" })
                 </div>
             }
 

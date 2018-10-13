@@ -104,8 +104,9 @@ namespace MoviesReview.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Content,CreationDate,UserID,MovieID")] Review review)
+        public ActionResult Edit([Bind(Include = "Id,Title,Content,UserID,MovieID")] Review review)
         {
+            review.CreationDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Entry(review).State = EntityState.Modified;
