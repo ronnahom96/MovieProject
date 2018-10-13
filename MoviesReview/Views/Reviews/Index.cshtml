@@ -84,7 +84,7 @@
                 @Html.DisplayFor(modelItem => review.Content)
             </div>
             <div>
-                @Html.ActionLink("Details", "Details", new { id = review.Id })
+                @Html.ActionLink("Details", "Details", new { id = review.Id }, new { @class = "btn btn-info" })
                 @if (user != null && user.IsAdmin)
                 {
                     <span> | </span> @Html.ActionLink("Edit", "Edit", new { id = review.Id })
