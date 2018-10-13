@@ -19,11 +19,11 @@ namespace MoviesReview.Models
         public virtual Genere Genere { get; set; }
 
         [Required]
-        [DisplayName("Image Url")]
+        [DisplayName("Image")]
         public string ImageUrl { get; set; }
 
         [Required]
-        [DisplayName("Trailer Url")]
+        [DisplayName("Trailer")]
         public string TrailerUrl { get; set; }
 
         [Required]
