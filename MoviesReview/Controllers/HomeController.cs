@@ -55,13 +55,13 @@ namespace MoviesReview.Controllers
             {
                 int userID = ((User)Session["User"]).Id;
 
-                int[] selectedGeneres = db.Reviews.Where(review => review.UserID == userID).Select(review => review.Movie.GenereID).Distinct().ToArray();
+                int[] selectedGeneres = db.Reviews.Where(review => review.UserID == userID).Select(review => review.Movie.GenereID).ToArray();
 
                 if (selectedGeneres.Length == 0)
                 {
                     selectedMovie = db.Movies.OrderBy(r => Guid.NewGuid()).First();
                 }
-                else if (selectedGeneres.Length == 1)
+                else if (selectedGeneres.Distinct().Count() == 1)
                 {
                     int selectedGenereId = selectedGeneres[0];
 

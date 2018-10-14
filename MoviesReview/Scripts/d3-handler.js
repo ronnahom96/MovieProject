@@ -73,12 +73,12 @@ function createPopularReviewsGraph(data) {
     // load the data
     data.forEach(function (d) {
         d.Title = d.Title;
-        d.NumberOfComment = +d.NumberOfComment;
+        d.NumberOfReviews = +d.NumberOfReviews;
     });
 
     // scale the range of the data
     x.domain(data.map(function (d) { return d.Title; }));
-    y.domain([0, d3.max(data, function (d) { return d.NumberOfComment; })]);
+    y.domain([0, d3.max(data, function (d) { return d.NumberOfReviews; })]);
 
     // add axis
     svg.append("g")
@@ -99,7 +99,7 @@ function createPopularReviewsGraph(data) {
         .attr("y", 0)
         .attr("dy", "1em")
         .style("text-anchor", "end")
-        .text("NumberOfComment");
+        .text("NumberOfReviews");
 
     // Add bar chart
     svg.selectAll("bar")
@@ -108,6 +108,6 @@ function createPopularReviewsGraph(data) {
         .attr("class", "bar")
         .attr("x", function (d) { return x(d.Title)+10; })
         .attr("width", x.rangeBand()/2)
-        .attr("y", function (d) { return y(d.NumberOfComment); })
-        .attr("height", function (d) { return height - y(d.NumberOfComment); });
+        .attr("y", function (d) { return y(d.NumberOfReviews); })
+        .attr("height", function (d) { return height - y(d.NumberOfReviews); });
 }

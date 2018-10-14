@@ -12,7 +12,7 @@
 
 @{
     // User and its number of reviews
-    var usersReplayCount = Model.Select(x => new { Name = x.UserName, Count = x.Reviews.Count() });
+    var usersReviewCount = Model.Select(x => new { Name = x.UserName, Count = x.Reviews.Count() });
 }
 
 <div class="aligned-to-center-div">
@@ -36,7 +36,7 @@
     </section>
 
     <script>
-        var usersData = @Html.Raw(Json.Encode(usersReplayCount));
+        var usersData = @Html.Raw(Json.Encode(usersReviewCount));
         createPopularUsersGraph(usersData, "popular-users-graph");
     </script>
 </div>
